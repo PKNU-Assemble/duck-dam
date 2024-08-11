@@ -1,8 +1,8 @@
 <div align=center><h2>📚 Stacks</h2></div>
-
 <div align=center> 
-  <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black"> 
+  <img src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white">
   <img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white">
+  <img src="https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white">
   <br>
   
   <img src="https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white">
@@ -41,6 +41,8 @@
 </table>
 </div>
 
+
+<div align=center><h2> 📖 ETC.</h2></div>
 
 ![Auto Assign](https://github.com/PKNU-Assemble/demo-repository/actions/workflows/auto-assign.yml/badge.svg)
 
