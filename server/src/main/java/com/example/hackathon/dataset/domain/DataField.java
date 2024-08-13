@@ -13,6 +13,8 @@ public class DataField {
     private Long id;
     @Column(name = "titleName")
     private String titleName;
+    @Column(name = "mediaType")
+    private String mediaType;
     @Column(name = "image")
     private String image;
 }
