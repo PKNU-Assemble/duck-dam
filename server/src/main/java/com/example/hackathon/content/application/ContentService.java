@@ -1,9 +1,6 @@
 package com.example.hackathon.content.application;
 
-import com.example.hackathon.content.dto.ContentDto;
-import com.example.hackathon.content.dto.InterestContentResponse;
-import com.example.hackathon.content.dto.ScrapContentResponse;
-import com.example.hackathon.content.dto.SimpleContentDto;
+import com.example.hackathon.content.dto.*;
 import com.example.hackathon.dataset.domain.Data;
 import com.example.hackathon.dataset.domain.DataField;
 import com.example.hackathon.dataset.domain.DataFieldUser;
@@ -11,9 +8,12 @@ import com.example.hackathon.dataset.repository.DataFieldRepository;
 import com.example.hackathon.dataset.repository.DataFieldUserRepository;
 import com.example.hackathon.dataset.repository.DataRepository;
 import com.example.hackathon.exception.BadRequestException;
-import com.example.hackathon.user.model.User;
+import com.example.hackathon.user.domain.User;
+import com.example.hackathon.user.domain.UserSearch;
 import com.example.hackathon.user.repository.UserRepository;
+import com.example.hackathon.user.repository.UserSearchRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -30,6 +30,7 @@ public class ContentService {
     private final DataRepository dataRepository;
     private final DataFieldRepository dataFieldRepository;
     private final DataFieldUserRepository dataFieldUserRepository;
+    private final UserSearchRepository userSearchRepository;
     public InterestContentResponse getInterestContentResponse(Long userId, Integer pagesize){
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new BadRequestException("유저 토큰 값을 다시 확인해주세요"));
@@ -118,5 +119,63 @@ public class ContentService {
             return false;
         else
             return true;
+    }
+
+    public String scrapContent(Long userId, Long contentId){
+        Optional<DataFieldUser> dataFieldUser = dataFieldUserRepository.findByUserIdAndDataFieldId(userId, contentId);
+        if(dataFieldUser.isEmpty()){
+            DataField dataField = dataFieldRepository.findById(contentId)
+                    .orElseThrow(() -> new BadRequestException("contentId 값을 다시 확인해주세요"));
+            User user = userRepository.findById(userId)
+                    .orElseThrow(() -> new BadRequestException("유저 토큰 값을 다시 확인해주세요"));
+            DataFieldUser newDataFieldUser = new DataFieldUser();
+            newDataFieldUser.setUser(user);
+            newDataFieldUser.setDataField(dataField);
+            dataFieldUserRepository.save(newDataFieldUser);
+            return "add scrap";
+        }
+        else{
+            dataFieldUserRepository.delete(dataFieldUser.get());
+            return "remove scrap";
+        }
+    }
+
+    public SearchContentResponse searchContent(Long userId, String keyword, String searchType, Integer pagesize, Integer pageindex){
+        Pageable pageable = PageRequest.of(pageindex, pagesize);
+        Page<DataField> dataFields = dataFieldRepository.findByKewordAndSearch(keyword, searchType, pageable);
+
+        List<SearchContentDto> searchContentDtos = new ArrayList<>();
+        for(DataField dataField : dataFields.getContent()){
+            SearchContentDto searchContentDto = SearchContentDto.builder()
+                    .contentId(dataField.getId())
+                    .contentTitle(dataField.getTitleName())
+                    .contentImage(dataField.getImage())
+                    .build();
+            searchContentDtos.add(searchContentDto);
+        }
+        boolean hasNextPage = true;
+        if(pageindex==dataFields.getTotalPages()-1){
+            hasNextPage = false;
+        }
+
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new BadRequestException("유저 토큰 값을 다시 확인해주세요"));
+        UserSearch userSearch = new UserSearch();
+        userSearch.setUser(user);
+        userSearch.setRecentSearchKeyword(keyword);
+        userSearchRepository.save(userSearch);
+
+        SearchContentResponse searchContentResponse = new SearchContentResponse(hasNextPage, searchContentDtos);
+        return searchContentResponse;
+    }
+
+    public RecentKeywordResponse getRecentKeyword(Long userId){
+        Pageable pageable = PageRequest.of(0, 6, Sort.by("id").descending());
+        List<UserSearch> userSearches = userSearchRepository.findByRecentKeyword(userId, pageable);
+        List<String> recentKeywords = new ArrayList<>();
+        for (UserSearch userSearch : userSearches){
+            recentKeywords.add(userSearch.getRecentSearchKeyword());
+        }
+        return new RecentKeywordResponse(recentKeywords);
     }
 }

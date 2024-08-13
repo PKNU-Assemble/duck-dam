@@ -1,6 +1,5 @@
-package com.example.hackathon.dataset.domain;
+package com.example.hackathon.user.domain;
 
-import com.example.hackathon.user.domain.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,12 +7,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class DataFieldUser {
+public class UserSearch {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
-    @ManyToOne(fetch = FetchType.LAZY)
-    private DataField dataField;
+    private String recentSearchKeyword;
 }

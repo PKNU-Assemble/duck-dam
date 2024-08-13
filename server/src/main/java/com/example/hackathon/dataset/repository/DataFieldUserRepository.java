@@ -2,7 +2,7 @@ package com.example.hackathon.dataset.repository;
 
 import com.example.hackathon.dataset.domain.DataField;
 import com.example.hackathon.dataset.domain.DataFieldUser;
-import com.example.hackathon.user.model.User;
+import com.example.hackathon.user.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -20,4 +20,6 @@ public interface DataFieldUserRepository extends JpaRepository<DataFieldUser, Lo
     List<DataFieldUser> findListByUserId(@Param("userId")Long userId);
 
     Optional<DataFieldUser>findByUserAndDataField(User user, DataField dataField);
+    @Query("SELECT dfu FROM DataFieldUser dfu WHERE dfu.user.id=:userId AND dfu.dataField.id=:contentId")
+    Optional<DataFieldUser>findByUserIdAndDataFieldId(@Param("userId")Long userId, @Param("contentId")Long contentId);
 }

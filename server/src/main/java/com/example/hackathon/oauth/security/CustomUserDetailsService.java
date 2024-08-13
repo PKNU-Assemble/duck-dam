@@ -1,7 +1,7 @@
 package com.example.hackathon.oauth.security;
 
 import com.example.hackathon.exception.ResourceNotFoundException;
-import com.example.hackathon.user.model.User;
+import com.example.hackathon.user.domain.User;
 import com.example.hackathon.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
