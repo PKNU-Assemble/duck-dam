@@ -19,4 +19,6 @@ public class DataField {
     private String image;
     @Column(name = "genre")
     private String genre;
+    @Column(name = "year")
+    private String year;
 }

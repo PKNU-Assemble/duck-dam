@@ -10,6 +10,7 @@ public record ContentDetailResponse(
         String contentTitle,
         String contentImage,
         String contentType,
+        String year,
         Boolean isScraped,
         List<String> addressTag,
         List<PlaceDto> placeDtos
