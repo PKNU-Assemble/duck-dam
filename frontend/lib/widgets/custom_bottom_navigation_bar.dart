@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/assets/colors/app_colors.dart';
+import 'package:frontend/colors/app_colors.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
   const CustomBottomNavigationBar({super.key});
