@@ -17,7 +17,7 @@ class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      backgroundColor: AppColors.backgroundColor,
+      backgroundColor: AppColors.mainWhiteColor,
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(

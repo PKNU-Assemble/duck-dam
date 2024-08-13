@@ -56,6 +56,12 @@ flutter:
   assets:
   - assets/icons/menu.svg
   - assets/icons/logo.png
+  - assets/icons/main_duckcheol.svg
+  - assets/icons/main_background.svg
+  - assets/icons/home.svg
+  - assets/icons/search.svg
+  - assets/icons/camera.svg
+  - assets/icons/mypage.svg
   fonts:
     - family: Pretendard
       fonts:

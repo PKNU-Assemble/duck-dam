@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:frontend/colors/app_colors.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
@@ -22,27 +23,27 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      items: const <BottomNavigationBarItem>[
+      items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
-          icon: Icon(Icons.home),
+          icon: SvgPicture.asset('assets/icons/home.svg'),
           label: '홈',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.search),
+          icon: SvgPicture.asset('assets/icons/search.svg'),
           label: '검색',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.person),
+          icon: SvgPicture.asset('assets/icons/camera.svg'),
           label: '카메라',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.person),
+          icon: SvgPicture.asset('assets/icons/mypage.svg'),
           label: '마이페이지',
         ),
       ],
       currentIndex: _selectedIndex,
-      selectedItemColor: AppColors.selectedColor,
-      unselectedItemColor: AppColors.noSelectedColor,
+      selectedItemColor: AppColors.mainOrangeColor,
+      unselectedItemColor: AppColors.mainOrangeColor,
       onTap: _onItemTapped,
       type: BottomNavigationBarType.fixed,
     );
