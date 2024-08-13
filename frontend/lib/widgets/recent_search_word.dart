@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/colors/app_colors.dart';
 
 class RecentSearchWord extends StatelessWidget {
   const RecentSearchWord({super.key});
@@ -18,8 +19,8 @@ class RecentSearchWord extends StatelessWidget {
       width: 100,
       margin: const EdgeInsets.symmetric(horizontal: 4.0),
       decoration: BoxDecoration(
-        color: Colors.lightBlueAccent.shade100,
-        borderRadius: BorderRadius.circular(15.0),
+        color: AppColors.recentSearchColor,
+        borderRadius: BorderRadius.circular(18.0),
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),

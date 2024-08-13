@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/colors/app_colors.dart';
 
 class SelectMovieDramaTab extends StatefulWidget {
   const SelectMovieDramaTab({super.key});
@@ -34,14 +35,22 @@ class _SelectMovieDramaTabState extends State<SelectMovieDramaTab>
       indicator: const BoxDecoration(
         border: Border(
           bottom: BorderSide(
-            color: Colors.orange,
+            color: AppColors.mainOrangeColor,
             width: 4.0,
           ),
         ),
       ),
-      indicatorSize: TabBarIndicatorSize.tab, // 이 속성으로 인디케이터 크기를 탭 크기에 맞춤
+      indicatorSize: TabBarIndicatorSize.tab, // 인디케이터 크기를 탭 크기에 맞춤
       labelColor: Colors.black,
       unselectedLabelColor: Colors.grey,
+      labelStyle: const TextStyle(
+        fontSize: 18.0, // 텍스트 크기
+        fontWeight: FontWeight.bold, // 텍스트 굵기
+      ),
+      unselectedLabelStyle: const TextStyle(
+        fontSize: 16.0, // 선택되지 않은 탭의 텍스트 크기
+        fontWeight: FontWeight.normal, // 선택되지 않은 탭의 텍스트 굵기
+      ),
     );
   }
 }

@@ -16,26 +16,67 @@ class SearchPage extends StatefulWidget {
 class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: AppColors.mainWhiteColor,
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.only(
-            left: 10.0,
-            right: 10.0,
-            top: 70.0,
-          ),
-          child: Column(
+      body: Stack(
+        children: [
+          Column(
             children: [
-              SearchBox(),
-              RecentSearchWord(),
-              SelectMovieDramaTab(),
-              SelectableCircle(),
+              Container(
+                height: 115, // 원하는 높이 설정 (SearchBox 높이의 절반)
+                color: AppColors.mainSkyColor,
+              ),
+              Expanded(
+                child: Container(
+                  color: AppColors.mainWhiteColor,
+                ),
+              ),
             ],
           ),
-        ),
+          SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.only(
+                left: 15.0,
+                right: 15.0,
+                top: 70.0,
+              ),
+              child: Column(
+                children: [
+                  const SearchBox(),
+                  const SizedBox(
+                    height: 5.0,
+                  ),
+                  const Row(
+                    children: [
+                      Text(
+                        "최근 검색어",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 10.0,
+                  ),
+                  const Row(
+                    children: [
+                      RecentSearchWord(),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 30.0,
+                  ),
+                  const SelectMovieDramaTab(),
+                  const SelectableCircle(),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
-      bottomNavigationBar: CustomBottomNavigationBar(),
+      bottomNavigationBar: const CustomBottomNavigationBar(),
     );
   }
 }

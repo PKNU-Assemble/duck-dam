@@ -28,22 +28,24 @@ class _SearchBoxState extends State<SearchBox> {
                   color: AppColors.mainOrangeColor, // 아이콘 색상 설정
                 ),
               ),
+              filled: true, // 배경을 채우기 위해 설정
+              fillColor: Colors.white, // 배경을 흰색으로 설정
               border: OutlineInputBorder(
-                borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+                borderRadius: const BorderRadius.all(Radius.circular(15.0)),
                 borderSide: BorderSide(
                   color: AppColors.mainOrangeColor,
                   width: 3.0,
                 ),
               ),
               enabledBorder: OutlineInputBorder(
-                borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+                borderRadius: const BorderRadius.all(Radius.circular(15.0)),
                 borderSide: BorderSide(
                   color: AppColors.mainOrangeColor,
                   width: 3.0,
                 ),
               ),
               focusedBorder: OutlineInputBorder(
-                borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+                borderRadius: const BorderRadius.all(Radius.circular(15.0)),
                 borderSide: BorderSide(
                   color: AppColors.mainOrangeColor,
                   width: 3.0,
