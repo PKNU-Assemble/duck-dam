@@ -6,9 +6,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface  DataRepository extends JpaRepository<Data, Long> {
     @Query("SELECT d FROM Data d WHERE d.titleName=:title ORDER BY RAND() limit 1")
     Optional<Data> findByTitle(@Param("title")String title);
+
+    @Query("SELECT d FROM Data d WHERE d.titleName=:title")
+    List<Data> findAllByTitle(@Param("title")String title);
 }

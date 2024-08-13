@@ -178,4 +178,39 @@ public class ContentService {
         }
         return new RecentKeywordResponse(recentKeywords);
     }
+
+    public ContentDetailResponse getContentDetailResponse(Long userId, Long contentId){
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new BadRequestException("유저 토큰 값을 다시 확인해주세요"));
+        DataField dataField = dataFieldRepository.findById(contentId)
+                .orElseThrow(() -> new BadRequestException("contentId 값을 다시 확인해주세요"));
+        List<Data> datas = dataRepository.findAllByTitle(dataField.getTitleName());
+        List<String> addressTags = new ArrayList<>();
+        List<PlaceDto> placeDtos = new ArrayList<>();
+        for(Data data : datas){
+            PlaceDto placeDto = PlaceDto.builder()
+                    .placeId(data.getId())
+                    .placeAddress(data.getAddress())
+                    .placeImage(data.getImage())
+                    .placeOverview(data.getPlaceOverview())
+                    .placeName(data.getPlaceName())
+                    .openTime(data.getOpenTime())
+                    .build();
+            placeDtos.add(placeDto);
+
+            String[] parts = data.getAddress().split(" ");
+            if(!addressTags.contains(parts[0]))
+                addressTags.add(parts[0]);
+        }
+        ContentDetailResponse contentDetailResponse = ContentDetailResponse.builder()
+                .contentId(contentId)
+                .contentImage(dataField.getImage())
+                .contentType(dataField.getMediaType())
+                .addressTag(addressTags)
+                .contentTitle(dataField.getTitleName())
+                .isScraped(isScraped(user,dataField))
+                .placeDtos(placeDtos)
+                .build();
+        return contentDetailResponse;
+    }
 }
