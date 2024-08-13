@@ -1,4 +1,4 @@
-package com.example.hackathon.user.model;
+package com.example.hackathon.user.domain;
 import com.example.hackathon.oauth.model.AuthProvider;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;

@@ -3,7 +3,7 @@ package com.example.hackathon.oauth.security.oauth2;
 
 import com.example.hackathon.exception.OAuth2AuthenticationProcessingException;
 import com.example.hackathon.oauth.model.AuthProvider;
-import com.example.hackathon.user.model.User;
+import com.example.hackathon.user.domain.User;
 import com.example.hackathon.user.repository.UserRepository;
 import com.example.hackathon.oauth.security.UserPrincipal;
 import com.example.hackathon.oauth.security.oauth2.user.OAuth2UserInfo;

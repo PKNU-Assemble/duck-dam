@@ -1,6 +1,6 @@
 package com.example.hackathon.oauth.security;
 
-import com.example.hackathon.user.model.User;
+import com.example.hackathon.user.domain.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

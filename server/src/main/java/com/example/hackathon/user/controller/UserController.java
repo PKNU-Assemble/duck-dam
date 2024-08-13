@@ -1,7 +1,7 @@
 package com.example.hackathon.user.controller;
 
 import com.example.hackathon.exception.ResourceNotFoundException;
-import com.example.hackathon.user.model.User;
+import com.example.hackathon.user.domain.User;
 import com.example.hackathon.user.repository.UserRepository;
 import com.example.hackathon.oauth.security.CurrentUser;
 import com.example.hackathon.oauth.security.UserPrincipal;
