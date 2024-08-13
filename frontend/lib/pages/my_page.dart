@@ -3,6 +3,7 @@ import 'package:frontend/colors/app_colors.dart';
 import 'package:frontend/widgets/custom_bottom_navigation_bar.dart';
 import 'package:frontend/widgets/my_app_bar.dart';
 import 'package:frontend/widgets/bookmark_list_togle.dart';
+import 'package:frontend/widgets/my_page_function_list.dart';
 
 class MyPage extends StatefulWidget {
   const MyPage({super.key});
@@ -26,6 +27,10 @@ class _MyPageState extends State<MyPage> {
             child: Column(
               children: [
                 BookmarkListTogle(),
+                SizedBox(
+                  height: 10,
+                ),
+                MyPageFunctionList(),
               ],
             ),
           ),

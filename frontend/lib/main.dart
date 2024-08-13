@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/pages/home_page.dart';
-import 'package:frontend/pages/search_page.dart';
+
 import 'package:frontend/pages/my_page.dart';
 
 void main() {
