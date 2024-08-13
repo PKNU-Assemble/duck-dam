@@ -10,6 +10,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class TmdbService {
@@ -26,11 +27,11 @@ public class TmdbService {
         List<DataField> dataFields = dataFieldRepository.findAll();
         for(DataField dataField : dataFields){
             if(dataField.getMediaType().equals("movie")){
-                dataField.setImage(getMovieImage(dataField.getTitleName()));
+                dataField.setGenre(getMovieGenres(dataField.getTitleName()));
                 dataFieldRepository.save(dataField);
             }
             else{
-                dataField.setImage(getTvImage(dataField.getTitleName()));
+                dataField.setGenre(getTvShowGenres(dataField.getTitleName()));
                 dataFieldRepository.save(dataField);
             }
         }
@@ -92,4 +93,67 @@ public class TmdbService {
         }
         return null;
     }
+
+    // TV 드라마 장르 가져오기
+    public String getTvShowGenres(String query) {
+        String searchUrl = UriComponentsBuilder.fromHttpUrl("https://api.themoviedb.org/3/search/tv")
+                .queryParam("api_key", apiKey)
+                .queryParam("query", query)
+                .queryParam("language", "ko-KR")
+                .toUriString();
+
+        Map<String, Object> searchResponse = restTemplate.getForObject(searchUrl, Map.class);
+
+        if (searchResponse != null && !((List<?>) searchResponse.get("results")).isEmpty()) {
+            Map<String, Object> firstResult = ((List<Map<String, Object>>) searchResponse.get("results")).get(0);
+            String id = String.valueOf(firstResult.get("id"));
+
+            String detailsUrl = UriComponentsBuilder.fromHttpUrl("https://api.themoviedb.org/3/tv/" + id)
+                    .queryParam("api_key", apiKey)
+                    .queryParam("language", "ko-KR")
+                    .toUriString();
+
+            Map<String, Object> detailsResponse = restTemplate.getForObject(detailsUrl, Map.class);
+
+            if (detailsResponse != null && detailsResponse.get("genres") != null) {
+                List<Map<String, Object>> genres = (List<Map<String, Object>>) detailsResponse.get("genres");
+                return genres.stream()
+                        .map(genre -> genre.get("name").toString())
+                        .collect(Collectors.joining(", "));
+            }
+        }
+        return "No genres found";
+    }
+
+    // 영화 장르 가져오기
+    public String getMovieGenres(String query) {
+        String searchUrl = UriComponentsBuilder.fromHttpUrl("https://api.themoviedb.org/3/search/movie")
+                .queryParam("api_key", apiKey)
+                .queryParam("query", query)
+                .queryParam("language", "ko-KR")
+                .toUriString();
+
+        Map<String, Object> searchResponse = restTemplate.getForObject(searchUrl, Map.class);
+
+        if (searchResponse != null && !((List<?>) searchResponse.get("results")).isEmpty()) {
+            Map<String, Object> firstResult = ((List<Map<String, Object>>) searchResponse.get("results")).get(0);
+            String id = String.valueOf(firstResult.get("id"));
+
+            String detailsUrl = UriComponentsBuilder.fromHttpUrl("https://api.themoviedb.org/3/movie/" + id)
+                    .queryParam("api_key", apiKey)
+                    .queryParam("language", "ko-KR")
+                    .toUriString();
+
+            Map<String, Object> detailsResponse = restTemplate.getForObject(detailsUrl, Map.class);
+
+            if (detailsResponse != null && detailsResponse.get("genres") != null) {
+                List<Map<String, Object>> genres = (List<Map<String, Object>>) detailsResponse.get("genres");
+                return genres.stream()
+                        .map(genre -> genre.get("name").toString())
+                        .collect(Collectors.joining(", "));
+            }
+        }
+        return "No genres found";
+    }
+
 }

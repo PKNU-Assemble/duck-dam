@@ -17,4 +17,6 @@ public class DataField {
     private String mediaType;
     @Column(name = "image")
     private String image;
+    @Column(name = "genre")
+    private String genre;
 }
