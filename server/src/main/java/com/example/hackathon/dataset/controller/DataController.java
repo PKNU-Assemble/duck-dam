@@ -15,13 +15,13 @@ public class DataController {
 
     private final DataService dataService;
 
-    @PostMapping("/upload")
-    public String uploadCSV(@RequestParam("file") MultipartFile file) {
-        try {
-            dataService.saveCsv(file);
-            return "File uploaded and data saved successfully!";
-        } catch (Exception e) {
-            return "Failed to upload and save data: " + e.getMessage();
-        }
-    }
+//    @PostMapping("/upload")
+//    public String uploadCSV(@RequestParam("file") MultipartFile file) {
+//        try {
+//            dataService.saveCsv(file);
+//            return "File uploaded and data saved successfully!";
+//        } catch (Exception e) {
+//            return "Failed to upload and save data: " + e.getMessage();
+//        }
+//    }
 }
