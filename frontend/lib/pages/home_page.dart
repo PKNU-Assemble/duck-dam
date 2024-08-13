@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/widgets/custom_app_bar.dart';
+import 'package:frontend/widgets/main_app_bar.dart';
 import 'package:frontend/colors/app_colors.dart';
 import 'package:frontend/widgets/custom_bottom_navigation_bar.dart';
 import 'package:frontend/widgets/home_recommend_list.dart';
@@ -16,7 +16,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      appBar: CustomAppBar(),
+      appBar: MainAppBar(),
       backgroundColor: AppColors.backgroundColor,
       body: SingleChildScrollView(
         child: Padding(

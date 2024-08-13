@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/pages/home_page.dart';
 import 'package:frontend/pages/search_page.dart';
+import 'package:frontend/pages/my_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -33,6 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     // return const HomePage();
-    return const SearchPage();
+    // return const SearchPage();
+    return const MyPage();
   }
 }
