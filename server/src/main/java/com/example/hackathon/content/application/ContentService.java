@@ -206,6 +206,7 @@ public class ContentService {
                 .contentId(contentId)
                 .contentImage(dataField.getImage())
                 .contentType(dataField.getMediaType())
+                .year(dataField.getYear())
                 .addressTag(addressTags)
                 .contentTitle(dataField.getTitleName())
                 .isScraped(isScraped(user,dataField))

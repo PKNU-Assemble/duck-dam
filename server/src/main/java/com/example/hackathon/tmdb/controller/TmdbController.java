@@ -16,8 +16,7 @@ public class TmdbController {
     private final TmdbService tmdbService;
 
 //    @GetMapping("/movie-image")
-//    public String getMovieImage() {
-//        tmdbService.saveImage();
-//        return "success save image";
+//    public String getMovieImage(@RequestParam String title) {
+//        return tmdbService.getTvShowStartYear(title);
 //    }
 }
