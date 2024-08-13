@@ -37,10 +37,6 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.person),
-          label: '지도',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.person),
           label: '마이페이지',
         ),
       ],

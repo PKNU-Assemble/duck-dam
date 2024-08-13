@@ -3,6 +3,7 @@ import 'package:frontend/colors/app_colors.dart';
 import 'package:frontend/widgets/custom_bottom_navigation_bar.dart';
 import 'package:frontend/widgets/search_box.dart';
 import 'package:frontend/widgets/recent_search_word.dart';
+import 'package:frontend/widgets/select_movie_drama_tab.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});
@@ -14,9 +15,9 @@ class SearchPage extends StatefulWidget {
 class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: AppColors.backgroundColor,
-      body: SingleChildScrollView(
+      body: const SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(
             left: 10.0,
@@ -27,6 +28,7 @@ class _SearchPageState extends State<SearchPage> {
             children: [
               SearchBox(),
               RecentSearchWord(),
+              SelectMovieDramaTab(),
             ],
           ),
         ),
