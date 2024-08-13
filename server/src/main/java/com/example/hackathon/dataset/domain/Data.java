@@ -33,4 +33,7 @@ public class Data {
     private String mapX;
     @Column(name = "tel")
     private String tel;
+    @Column(name = "image")
+    private String image;
+
 }
