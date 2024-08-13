@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ContentDetailController {
     private final ContentService contentService;
     @GetMapping("/content")
-    @Operation(summary = "내가 관심 있어 하는 장르의 작품 리스트 + 간편 주소를 가져옵니다. " ,description = "userId와 가져올 컨텐츠 갯수를 파라미터로 넣어주세요")
+    @Operation(summary = "상세 페이지에서의 정보를 가져옵니다" ,description = "userId와 contentId를 파라미터로 넣어주세요")
     public ResponseEntity<ContentDetailResponse> getInterestContentResponse(@RequestParam Long userId, @RequestParam Long contentId) {
         ContentDetailResponse contentDetailResponse = contentService.getContentDetailResponse(userId, contentId);
         return new ResponseEntity<>(contentDetailResponse, HttpStatus.OK);
