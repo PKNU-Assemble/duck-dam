@@ -5,14 +5,14 @@ import 'package:frontend/widgets/custom_bottom_navigation_bar.dart';
 import 'package:frontend/widgets/home_recommend_list.dart';
 import 'package:frontend/widgets/search_box.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class SearchPage extends StatefulWidget {
+  const SearchPage({super.key});
 
   @override
-  _HomePageState createState() => _HomePageState();
+  _SearchPageState createState() => _SearchPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
