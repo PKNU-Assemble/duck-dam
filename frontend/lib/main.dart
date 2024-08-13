@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
 import 'package:frontend/pages/my_page.dart';
+import 'package:frontend/pages/detail_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,6 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     // return const HomePage();
     // return const SearchPage();
-    return const MyPage();
+    // return const MyPage();
+    return const DetailPage();
   }
 }
