@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 
 class SelectableCircle extends StatefulWidget {
-  // final String label;
+  final String contentTitle;
+  final String contentImage;
+  final VoidCallback onTap; // 추가된 onTap 콜백
 
   const SelectableCircle({
     Key? key,
+    required this.contentTitle,
+    required this.contentImage,
+    required this.onTap, // onTap 콜백을 받아옴
   }) : super(key: key);
 
   @override
@@ -23,15 +28,19 @@ class _SelectableCircleState extends State<SelectableCircle> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: _toggleSelection,
+      onTap: () {
+        _toggleSelection();
+        widget.onTap(); // 탭 시 onTap 콜백 호출
+      },
       child: Column(
         children: [
           Stack(
             alignment: Alignment.center,
             children: [
-              // 회색 원
+              // 이미지가 들어간 원
               CircleAvatar(
                 radius: 35,
+                backgroundImage: NetworkImage(widget.contentImage),
                 backgroundColor: Colors.grey.shade300,
               ),
               // 주황색 테두리가 그려진 원
@@ -49,31 +58,17 @@ class _SelectableCircleState extends State<SelectableCircle> {
             ],
           ),
           const SizedBox(height: 8),
-          Text("영화",
-              style: TextStyle(color: isSelected ? Colors.black : Colors.grey)),
+          Text(
+            widget.contentTitle,
+            style: TextStyle(
+              color: isSelected ? Colors.black : Colors.grey,
+              overflow: TextOverflow.ellipsis,
+            ),
+            maxLines: 1,
+            textAlign: TextAlign.center,
+          ),
         ],
       ),
-    );
-  }
-}
-
-class CircleGrid extends StatelessWidget {
-  const CircleGrid({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return GridView.builder(
-      padding: const EdgeInsets.all(16.0),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 3, // 한 줄에 3개의 항목
-        crossAxisSpacing: 10.0,
-        mainAxisSpacing: 10.0,
-        childAspectRatio: 1, // 정사각형 비율
-      ),
-      itemCount: 9, // 예시를 위해 9개의 아이템을 표시
-      itemBuilder: (context, index) {
-        return const SelectableCircle();
-      },
     );
   }
 }

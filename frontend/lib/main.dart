@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/pages/my_page.dart';
-import 'package:frontend/pages/detail_page.dart';
+import 'package:frontend/pages/home_page.dart';
+import 'package:frontend/pages/search_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      // debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(fontFamily: "Pretendard"),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
@@ -32,9 +33,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    // return const HomePage();
-    // return const SearchPage();
-    // return const MyPage();
-    return const DetailPage();
+    return const HomePage();
   }
 }

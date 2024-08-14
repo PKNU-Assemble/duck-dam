@@ -36,6 +36,9 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   flutter_svg: ^2.0.10+1
+  camera: ^0.11.0+2
+  rename: ^3.0.2
+  path_provider: ^2.1.4
 
 dev_dependencies:
   flutter_test:
@@ -56,6 +59,17 @@ flutter:
   assets:
   - assets/icons/menu.svg
   - assets/icons/logo.png
+  - assets/icons/main_duckcheol.svg
+  - assets/icons/main_background.svg
+  - assets/icons/home.svg
+  - assets/icons/search.svg
+  - assets/icons/camera.svg
+  - assets/icons/mypage.svg
+  - assets/icons/location.svg
+  - assets/icons/back.svg
+  - assets/icons/bookmark.svg
+  - assets/images/frame1.png
+  - assets/images/frame2.png
   fonts:
     - family: Pretendard
       fonts:

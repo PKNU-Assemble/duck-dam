@@ -17,7 +17,7 @@ class _MyPageState extends State<MyPage> {
   Widget build(BuildContext context) {
     return const Scaffold(
       appBar: MyAppBar(),
-      backgroundColor: AppColors.backgroundColor,
+      backgroundColor: AppColors.mainWhiteColor,
       body: Column(
         children: [
           Padding(
