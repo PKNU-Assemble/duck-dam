@@ -7,7 +7,12 @@ import 'package:frontend/widgets/select_movie_drama_tab.dart';
 import 'package:frontend/widgets/selectable_circle.dart';
 
 class SearchPage extends StatefulWidget {
-  const SearchPage({super.key});
+  const SearchPage({
+    super.key,
+    required this.isDrama,
+  });
+
+  final bool isDrama;
 
   @override
   _SearchPageState createState() => _SearchPageState();
@@ -42,7 +47,7 @@ class _SearchPageState extends State<SearchPage> {
               ),
               child: Column(
                 children: [
-                  const SearchBox(),
+                  const SearchBox(isComeFromHome: false, isDrama: true),
                   const SizedBox(
                     height: 5.0,
                   ),
