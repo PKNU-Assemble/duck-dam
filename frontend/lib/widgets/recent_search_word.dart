@@ -2,21 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:frontend/colors/app_colors.dart';
 
 class RecentSearchWord extends StatelessWidget {
-  const RecentSearchWord({super.key});
+  final String text;
 
-  // final String text;
-  // final VoidCallback onDelete;
-
-  // const RecentSearchWord({
-  //   Key? key,
-  //   required this.text,
-  //   required this.onDelete,
-  // }) : super(key: key);
+  const RecentSearchWord({
+    super.key,
+    required this.text,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 100,
       margin: const EdgeInsets.symmetric(horizontal: 4.0),
       decoration: BoxDecoration(
         color: AppColors.recentSearchColor,
@@ -27,18 +22,20 @@ class RecentSearchWord extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Flexible(
+            Flexible(
               child: Text(
-                "안녕안녕안녕안녕안녕",
+                text,
                 overflow: TextOverflow.fade,
                 maxLines: 1,
                 softWrap: false,
-                style: TextStyle(color: Colors.black),
+                style: const TextStyle(color: Colors.black),
               ),
             ),
             const SizedBox(width: 4.0),
             GestureDetector(
-              // onTap: ,
+              onTap: () {
+                // 삭제 로직 구현
+              },
               child: const Icon(
                 Icons.cancel,
                 size: 16.0,

@@ -1,23 +1,57 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:frontend/colors/app_colors.dart';
+import 'package:frontend/pages/search_page.dart';
 import 'package:frontend/services/api_service.dart';
+import 'package:frontend/models/search_content_dto.dart';
 
 class SearchBox extends StatefulWidget {
-  const SearchBox(
-      {super.key, required this.isComeFromHome, required this.isDrama});
+  const SearchBox({
+    super.key,
+    required this.isComeFromHome,
+    required this.isDrama,
+    this.hint,
+  });
 
   final bool isComeFromHome;
   final bool isDrama;
+  final String? hint;
 
   @override
   _SearchBoxState createState() => _SearchBoxState();
 }
 
 class _SearchBoxState extends State<SearchBox> {
-  void _onSearchIconTapped() {
+  final TextEditingController textEditingController = TextEditingController();
+  late String keyword;
+
+  @override
+  void initState() {
+    super.initState();
+    textEditingController.text = widget.hint ?? '';
+    keyword = widget.hint ?? '';
+  }
+
+  void _onSearchIconTapped() async {
+    String type = widget.isDrama ? 'Drama' : 'Movie';
+    SearchContentResponse? data = await APIService.search(keyword, type);
+
     if (widget.isComeFromHome) {
-    } else {}
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => SearchPage(
+              isDrama: widget.isDrama,
+              hint: textEditingController.text,
+              searchContentResponse: data,
+            ),
+          ),
+        );
+      });
+    } else {
+      // 홈에서 오지 않은 경우의 처리
+    }
   }
 
   @override
@@ -27,38 +61,39 @@ class _SearchBoxState extends State<SearchBox> {
       child: Column(
         children: [
           TextField(
+            controller: textEditingController,
             decoration: InputDecoration(
-              hintText: '다양한 컨텐츠들을 검색해보아요.',
+              hintText: widget.hint ?? '다양한 컨텐츠들을 검색해보아요.',
               suffixIcon: InkWell(
                 onTap: _onSearchIconTapped,
                 child: Padding(
-                  padding: const EdgeInsets.all(10.0), // 아이콘 여백 조정
+                  padding: const EdgeInsets.all(10.0),
                   child: SvgPicture.asset(
                     'assets/icons/search.svg',
-                    width: 20, // SVG 아이콘의 크기를 조정
+                    width: 20,
                     height: 20,
-                    color: AppColors.mainOrangeColor, // 아이콘 색상 설정
+                    color: AppColors.mainOrangeColor,
                   ),
                 ),
               ),
-              filled: true, // 배경을 채우기 위해 설정
-              fillColor: Colors.white, // 배경을 흰색으로 설정
-              border: OutlineInputBorder(
-                borderRadius: const BorderRadius.all(Radius.circular(15.0)),
+              filled: true,
+              fillColor: Colors.white,
+              border: const OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(15.0)),
                 borderSide: BorderSide(
                   color: AppColors.mainOrangeColor,
                   width: 3.0,
                 ),
               ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: const BorderRadius.all(Radius.circular(15.0)),
+              enabledBorder: const OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(15.0)),
                 borderSide: BorderSide(
                   color: AppColors.mainOrangeColor,
                   width: 3.0,
                 ),
               ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: const BorderRadius.all(Radius.circular(15.0)),
+              focusedBorder: const OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(15.0)),
                 borderSide: BorderSide(
                   color: AppColors.mainOrangeColor,
                   width: 3.0,
@@ -66,7 +101,9 @@ class _SearchBoxState extends State<SearchBox> {
               ),
             ),
             onChanged: (text) {
-              // 검색어가 입력될 때 수행할 동작
+              setState(() {
+                keyword = text;
+              });
             },
           ),
         ],

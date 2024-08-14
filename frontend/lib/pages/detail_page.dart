@@ -144,7 +144,6 @@ class _DetailPageState extends State<DetailPage> {
                       itemBuilder: (context, index) {
                         final place = contentDetail!.placeDtos[index];
                         return _buildListItem(
-                          index + 1,
                           place.placeImage,
                           place.placeName,
                           place.placeOverview,
@@ -160,8 +159,8 @@ class _DetailPageState extends State<DetailPage> {
     );
   }
 
-  Widget _buildListItem(int index, String placeImage, String title,
-      String description, String placeAddress) {
+  Widget _buildListItem(String placeImage, String title, String description,
+      String placeAddress) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -192,7 +191,7 @@ class _DetailPageState extends State<DetailPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '$index화 / $title',
+                      title,
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 16.0,

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:frontend/colors/app_colors.dart';
 
 class SelectMovieDramaTab extends StatefulWidget {
-  const SelectMovieDramaTab({super.key});
+  final ValueChanged<int> onTabSelected;
+
+  const SelectMovieDramaTab({super.key, required this.onTabSelected});
 
   @override
   _SelectMovieDramaTabState createState() => _SelectMovieDramaTabState();
@@ -16,6 +18,11 @@ class _SelectMovieDramaTabState extends State<SelectMovieDramaTab>
   void initState() {
     super.initState();
     tabController = TabController(length: 2, vsync: this);
+    tabController.addListener(() {
+      if (!tabController.indexIsChanging) {
+        widget.onTabSelected(tabController.index);
+      }
+    });
   }
 
   @override
@@ -40,7 +47,7 @@ class _SelectMovieDramaTabState extends State<SelectMovieDramaTab>
           ),
         ),
       ),
-      indicatorSize: TabBarIndicatorSize.tab, // 인디케이터 크기를 탭 크기에 맞춤
+      indicatorSize: TabBarIndicatorSize.tab,
       labelColor: Colors.black,
       unselectedLabelColor: Colors.grey,
       labelStyle: const TextStyle(

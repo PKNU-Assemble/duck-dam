@@ -6,7 +6,7 @@ import 'dart:math' as math;
 import 'package:path/path.dart' show join;
 
 class CameraPage extends StatefulWidget {
-  final String imagePath;
+  final String? imagePath;
 
   const CameraPage({
     super.key,
@@ -80,7 +80,7 @@ class _CameraPageState extends State<CameraPage> {
                     child: Transform.rotate(
                       angle: math.pi / 2,
                       child: Image.asset(
-                        widget.imagePath,
+                        widget.imagePath ?? '',
                         fit: BoxFit.cover,
                       ),
                     ),

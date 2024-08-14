@@ -58,7 +58,7 @@ class _HomePageState extends State<HomePage> {
                   Container(
                     height: 600,
                     width: double.infinity,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: AppColors.mainSkyColor,
                     ),
                     child: Stack(
@@ -72,16 +72,16 @@ class _HomePageState extends State<HomePage> {
                         Positioned(
                           top: 60,
                           left: 20,
-                          child: Image.asset('assets/icons/logo.png'),
                           width: 100,
+                          child: Image.asset('assets/icons/logo.png'),
                         ),
-                        Positioned(
+                        const Positioned(
                           top: 150,
                           left: 20,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const Text(
+                              Text(
                                 '안녕하세요, 오리님',
                                 style: TextStyle(
                                   color: AppColors.boldFontsColor,
@@ -89,10 +89,10 @@ class _HomePageState extends State<HomePage> {
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              const SizedBox(
+                              SizedBox(
                                 height: 20,
                               ),
-                              const Text(
+                              Text(
                                 '오늘의 추천 촬영지는\n바로 여기임',
                                 style: TextStyle(
                                   color: AppColors.thinFontsColor,
@@ -117,7 +117,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   Container(
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: AppColors.mainWhiteColor,
                     ),
                     child: Column(
@@ -132,8 +132,8 @@ class _HomePageState extends State<HomePage> {
                         const SizedBox(
                           height: 30,
                         ),
-                        Row(
-                          children: const [
+                        const Row(
+                          children: [
                             Padding(
                               padding: EdgeInsets.only(left: 20),
                               child: Text(

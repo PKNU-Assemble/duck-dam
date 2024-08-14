@@ -13,6 +13,8 @@ class CustomBottomNavigationBar extends StatefulWidget {
 class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   int _selectedIndex = 0;
 
+  final List<Widget> _pages = [];
+
   // 탭 클릭시 호출될 함수
   void _onItemTapped(int index) {
     setState(() {

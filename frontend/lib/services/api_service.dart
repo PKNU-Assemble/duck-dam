@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'package:http_parser/http_parser.dart';
 import 'package:frontend/models/content_dto.dart';
+import 'package:frontend/models/search_content_dto.dart';
 
 const String domainUrl =
     'https://port-0-hackathon-be-lyqylohp8957ca6e.sel5.cloudtype.app';
@@ -85,6 +86,62 @@ class APIService {
 
         if (responseData != null && responseData is Map<String, dynamic>) {
           return ContentDetail.fromJson(responseData);
+        }
+      }
+      return null;
+    } catch (error) {
+      print("에러 발생: $error");
+      return null;
+    }
+  }
+
+  static Future<SearchContentResponse?> search(
+      String keyword, String type) async {
+    final url =
+        '$domainUrl/api/content/search?userId=1&keyword=$keyword&searchType=$type&pagesize=9&pageindex=0';
+    try {
+      final response = await http.get(
+        Uri.parse(url),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      );
+
+      if (response.statusCode == 200) {
+        print("불러오기 성공");
+        final responseData = json.decode(utf8.decode(response.bodyBytes));
+        print(responseData);
+
+        if (responseData != null && responseData is Map<String, dynamic>) {
+          return SearchContentResponse.fromJson(responseData);
+        }
+      }
+      return null;
+    } catch (error) {
+      print("에러 발생: $error");
+      return null;
+    }
+  }
+
+  static Future<List<dynamic>?> getRecentSearch(
+      String keyword, String type) async {
+    const url = '$domainUrl/api/content/search/recent/keyword?userId=1';
+    try {
+      final response = await http.get(
+        Uri.parse(url),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      );
+
+      if (response.statusCode == 200) {
+        print("불러오기 성공");
+        final responseData = json.decode(utf8.decode(response.bodyBytes));
+        print(responseData);
+
+        if (responseData != null && responseData is Map<String, dynamic>) {
+          print(responseData['keywords']);
+          return responseData['keywords'];
         }
       }
       return null;
