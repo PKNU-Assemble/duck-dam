@@ -40,8 +40,17 @@
   </tr>
 </table>
 </div>
-
-
+<br>
+<div align=center><h2> 📖 API</h2></div>
+<h3> 미디어콘텐츠 영상 내 유명지 데이터셋 </h3>
+국내 미디어 콘텐츠 영상 내 촬영지 정보를 가지고 있는 데이터셋. 15000개 이상의 데이터 보유.
+<br>
+https://www.bigdata-culture.kr/bigdata/user/data_market/detail.do?id=462fe230-0334-11ee-a67e-69239d37dfae
+<h3> TMDB API </h3>
+촬영지 정보와 함께 추가적으로 드라마, 영화 정보 및 이미지 제공을 위한 API.
+<br>
+https://developer.themoviedb.org/reference/intro/getting-started
+<br>
 <div align=center><h2>🔖 Contents</h2></div>
 
 ![image](https://github.com/user-attachments/assets/8fd61bfb-0a1a-4adb-af7e-c013c4ec8f4e)
