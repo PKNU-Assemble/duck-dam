@@ -42,17 +42,16 @@
 </div>
 
 
-<div align=center><h2> 📖 ETC.</h2></div>
-
-![Auto Assign](https://github.com/PKNU-Assemble/demo-repository/actions/workflows/auto-assign.yml/badge.svg)
-
-![Proof HTML](https://github.com/PKNU-Assemble/demo-repository/actions/workflows/proof-html.yml/badge.svg)
-
-
 <div align=center><h2>🔖 Contents</h2></div>
 
 ![image](https://github.com/user-attachments/assets/8fd61bfb-0a1a-4adb-af7e-c013c4ec8f4e)
 ![image](https://github.com/user-attachments/assets/589d7545-8818-4c63-84f5-49fa94dd709e)
 ![image](https://github.com/user-attachments/assets/72324c1e-f67a-46fd-878d-de7f04c669f5)
 ![image](https://github.com/user-attachments/assets/b042d906-0713-4f52-80e2-f1b256c85a80)
+
+<div align=center><h2> 📖 ETC.</h2></div>
+
+![Auto Assign](https://github.com/PKNU-Assemble/demo-repository/actions/workflows/auto-assign.yml/badge.svg)
+
+![Proof HTML](https://github.com/PKNU-Assemble/demo-repository/actions/workflows/proof-html.yml/badge.svg)
 
