@@ -45,6 +45,8 @@
 <h3> 미디어콘텐츠 영상 내 유명지 데이터셋 </h3>
 국내 미디어 콘텐츠 영상 내 촬영지 정보를 가지고 있는 데이터셋. 15000개 이상의 데이터 보유.
 <br>
+필요 데이터만 추출하여 데이터베이스에 저장 후 사용.
+<br>
 https://www.bigdata-culture.kr/bigdata/user/data_market/detail.do?id=462fe230-0334-11ee-a67e-69239d37dfae
 <h3> TMDB API </h3>
 촬영지 정보와 함께 추가적으로 해당 드라마, 영화 정보 및 이미지 제공을 위한 API.
