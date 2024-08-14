@@ -47,7 +47,7 @@
 <br>
 https://www.bigdata-culture.kr/bigdata/user/data_market/detail.do?id=462fe230-0334-11ee-a67e-69239d37dfae
 <h3> TMDB API </h3>
-촬영지 정보와 함께 추가적으로 드라마, 영화 정보 및 이미지 제공을 위한 API.
+촬영지 정보와 함께 추가적으로 해당 드라마, 영화 정보 및 이미지 제공을 위한 API.
 <br>
 https://developer.themoviedb.org/reference/intro/getting-started
 <br>
