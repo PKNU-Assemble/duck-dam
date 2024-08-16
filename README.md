@@ -54,6 +54,17 @@ https://www.bigdata-culture.kr/bigdata/user/data_market/detail.do?id=462fe230-03
 https://developer.themoviedb.org/reference/intro/getting-started
 <br>
 <div align=center><h2>🔖 Contents</h2></div>
+<h3>당신의 덕질을 사진속에 담다. 덕담</h3>
+매년마다 국내 OTT 규모와 이용률이 늘어나고 있으며 드라마, 영화 촬영지 언급량이 점차 증가하는 추세를 확인할 수 있습니다.
+<br><br>
+그만큼 드라마와 영화 장소에 대중들이 관심을 가지고 있다는 것을 알 수 있으며 이는 지역 경제 활성화하는데 영향을 줄 수 있습니다. 정부 및 지자체에서도 한류 문화를 기반으로 관광 산업을 발전 시키려고 노력하고 있으나 드라마 분위기를 느낄 수 있는 콘텐츠가 부족하다거나, 다양한 체험프로그램 구성 미비 등. 드라마 뮤직비디오, 예능에서 느꼈던 지역의 특색을 제대로 살리지 못했다는 평가를 받고 있습니다.
+<br><br>
+따라서 저희 덕담은 새로운 트렌드에 따른 기록용 컨텐츠를 통해 흥미를 유발 시키고 드라마, 영화의 해당 장면과 똑같은 사진 구도 가이드를 제공함으로써 특별한 추억을 남길 수 있는데에 초점을 맞추기로 하였습니다.
+<br> <br>
+덕담에선 14000개 이상의 드라마, 영화의 촬영지 정보들을 제공하면서, 해당 촬영지가 등장한 장면의 모습을 그 장소에서 그대로 따라할 수 있도록 도와줍니다. 
+<br>
+<h3>덕담으로 드라마, 영화의 주연이 되어 보는 특별한 추억을 남겨보세요!</h3>
+<br>
 
 ![image](https://github.com/user-attachments/assets/8fd61bfb-0a1a-4adb-af7e-c013c4ec8f4e)
 ![image](https://github.com/user-attachments/assets/589d7545-8818-4c63-84f5-49fa94dd709e)
